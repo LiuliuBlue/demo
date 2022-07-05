@@ -10,6 +10,8 @@
       </el-form-item>
       <el-form-item label="验证码" prop="code">
         <el-input v-model="loginForm.code" />
+        <img :src="imgCodeUrl" alt="正在加载" class="codeImg" />
+        <span @click="getImgCode">换一个</span>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onLogin" @keyup.enter="onLogin"
@@ -21,8 +23,9 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { getCaptcha, getLogin } from '@/api/login'
 const router = useRouter()
 /**
  * @描述 表单数据对象
@@ -30,8 +33,11 @@ const router = useRouter()
 const loginForm = reactive({
   username: 'test',
   password: '1234567',
-  code: ''
+  code: '',
+  token: ''
 })
+// 验证码图片地址
+const imgCodeUrl = ref('')
 // 用户名验证规则
 const validateUsername = (rule, value, callback) => {
   if (value === '') {
@@ -83,9 +89,23 @@ const loginRules = {
 /**
  * @描述 登录事件
  */
-const onLogin = () => {
-  router.push('/layout')
+const onLogin = async () => {
+  try {
+    await getLogin(loginForm)
+    await router.push('/layout')
+  } catch (error) {
+    console.log(error)
+  }
 }
+/**
+ * @描述 获取验证码事件
+ */
+const getImgCode = async () => {
+  const res = await getCaptcha()
+  loginForm.token = res.token
+  imgCodeUrl.value = res.captchaImg
+}
+getImgCode()
 </script>
 <style lang="scss" scoped>
 .login {
@@ -104,6 +124,11 @@ const onLogin = () => {
     padding: 50px;
     width: 500px;
     border: 1px solid #000;
+    .codeImg {
+      width: 120px;
+      height: 40px;
+      border: 1px solid #000;
+    }
   }
 }
 </style>

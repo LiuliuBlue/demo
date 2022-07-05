@@ -1,5 +1,5 @@
 {
-  "name": "vue-element-admin",
+  "name": "system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -36,7 +36,8 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
