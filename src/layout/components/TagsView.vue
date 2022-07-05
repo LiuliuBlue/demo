@@ -11,8 +11,7 @@
         <span
           v-show="$route.path !== item.path"
           @click.stop="$store.commit('tags/delTag', index)"
-          ><close-circle-outlined
-        /></span>
+        ></span>
       </li>
     </ul>
   </div>

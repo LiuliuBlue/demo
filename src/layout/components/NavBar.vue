@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
 // 对话框的默认状态

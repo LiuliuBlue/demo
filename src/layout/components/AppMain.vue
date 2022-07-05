@@ -1,5 +1,3 @@
 <template>
-  <a-card>
-    <router-view></router-view>
-  </a-card>
+  <router-view></router-view>
 </template>

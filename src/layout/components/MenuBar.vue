@@ -1,9 +1,16 @@
 <template>
   <div>
-    <a-menu mode="inline" theme="dark">
-      <menu-item v-for="(item, index) in list" :key="index" :tree="item">
-      </menu-item>
-    </a-menu>
+    <el-menu
+      :default-active="$route.path"
+      active-text-color="#ffd04b"
+      background-color="#545c64"
+      router
+      text-color="#fff"
+      unique-opened
+    >
+      <MenuItem v-for="(item, index) in list" :key="index" :tree="item">
+      </MenuItem>
+    </el-menu>
   </div>
 </template>
 
