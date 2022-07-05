@@ -9,14 +9,12 @@
         <el-input v-model="loginForm.password" type="password" />
       </el-form-item>
       <el-form-item label="验证码" prop="code">
-        <el-input v-model="loginForm.code" />
+        <el-input v-model="loginForm.code" @keyup.enter="onLogin" />
         <img :src="imgCodeUrl" alt="正在加载" class="codeImg" />
         <span @click="getImgCode">换一个</span>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onLogin" @keyup.enter="onLogin"
-          >登录</el-button
-        >
+        <el-button type="primary" @click="onLogin">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -92,7 +90,7 @@ const loginRules = {
 const onLogin = async () => {
   try {
     await getLogin(loginForm)
-    await router.push('/layout')
+    await router.push('/index')
   } catch (error) {
     console.log(error)
   }

@@ -1,54 +1,62 @@
 <template>
-  <div class="app-wrapper">
-    123
-    <!-- <sidebar class="sidebar-container"></sidebar> -->
-    <div class="main-container">
-      <div class="fixed-header">
-        456
-        <!-- <navbar></navbar> -->
-        <!-- <tags-view></tags-view> -->
+  <div id="main-container">
+    <div class="left">
+      <MenuBar></MenuBar>
+    </div>
+    <div class="right">
+      <div class="right_top">
+        <NavBar class="navbar"></NavBar>
+        <TagsView class="tagsView"></TagsView>
       </div>
-      789
-      <!-- <AppMain></AppMain> -->
+      <div class="right_bottom">
+        <AppMain></AppMain>
+      </div>
     </div>
   </div>
 </template>
-<script setup></script>
+
+<script setup>
+import MenuBar from '@/layout/components/MenuBar'
+import NavBar from '@/layout/components/NavBar'
+import AppMain from '@/layout/components/AppMain'
+import TagsView from '@/layout/components/TagsView'
+</script>
 <style lang="scss" scoped>
-.app-wrapper {
-  position: relative;
+#main-container {
   width: 100%;
   height: 100%;
+  display: flex;
 
-  .sidebar-container {
-    width: 200px;
-    height: 100%;
-    background-color: #545c64;
-    overflow-y: auto;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    -ms-overflow-style: none; /* IE 10+ */
-    scrollbar-width: none; /* Firefox */
+  .left {
+    width: 210px;
+    background-color: #001529;
   }
 
-  .main-container {
-    width: calc(100% - 210px);
-    height: 100%;
-    margin-left: 210px;
-    position: relative;
+  .right {
+    flex: 1;
 
-    .fixed-header {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 9;
-      width: calc(100% - 210px);
+    .right_top {
+      height: 75px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+
+      .navbar {
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tagsView {
+        height: 30px;
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    }
+
+    .right_bottom {
+      padding: 10px;
     }
   }
-}
-::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
 }
 </style>

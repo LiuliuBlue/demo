@@ -1,7 +1,5 @@
 <template>
-  <div class="AppMain">右下主体</div>
+  <a-card>
+    <router-view></router-view>
+  </a-card>
 </template>
-<script setup></script>
-<style lang="scss" scoped>
-
-</style>

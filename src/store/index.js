@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import user from './modules/user'
-// import permission from './modules/permission'
-// import tags from './modules/tags'
+import permission from './modules/permission'
+import tags from './modules/tags'
 
 export default createStore({
   getters: {
@@ -13,8 +13,8 @@ export default createStore({
     tags: (state) => state.tags.tagsArray
   },
   modules: {
-    user
-    // permission
-    // tags
+    user,
+    permission,
+    tags
   }
 })
